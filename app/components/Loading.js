@@ -5,8 +5,8 @@ const LoadingView = () => {
     <div className="">
       <Vortex
         visible={true}
-        height="70"
-        width="70"
+        height="50"
+        width="50"
         ariaLabel="vortex-loading"
         wrapperStyle={{}}
         wrapperClass="vortex-wrapper"
