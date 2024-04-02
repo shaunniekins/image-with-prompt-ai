@@ -87,9 +87,8 @@ const MainPageComponent = () => {
                   rows="1"
                   className="w-full bg-transparent outline-none resize-none"
                   value={textPrompt}
-                  onChange={handleTextChange}>
-                  {textPrompt}
-                </textarea>
+                  onChange={handleTextChange}
+                />
                 {/* {imagePrompt && textPrompt && ( */}
                 <button
                   className="bg-sky-500 text-white py-2 px-3 rounded-xl"
