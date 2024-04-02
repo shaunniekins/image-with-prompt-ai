@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Snap Search
 
-## Getting Started
+Snap Search is a multi-modal search application that allows users to search using both text and images. It utilizes the Google Generative AI API to generate responses based on the provided input.
 
-First, run the development server:
+## Key Features
+
+- **Image Upload:** Users can upload an image as part of their search query.
+- **Text Query:** Users can enter a text query to supplement their image search.
+- **Google Generative AI API Integration:** The application submits the image and text query to the Google Generative AI API and generates a response based on the input.
+- **Reset Functionality:** Users can easily reset the prompts and response.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Google Generative AI API](https://aistudio.google.com/app/apikey)
+
+## Installation
+
+Follow these steps to get the application up and running:
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/your-repo/snap-search.git
+```
+
+2. **Install dependencies:**
+   Navigate to the project directory and install the dependencies:
+
+```bash
+cd snap-search
+npm install
+```
+
+3. **Set up the Google Generative AI API key:**
+
+   Obtain an API key from the [Google Cloud Console](https://console.cloud.google.com/).
+   Create a `.env.local` file in the root directory of the project.
+   Add the following line to the file, replacing `<YOUR_API_KEY>` with your actual API key:
+
+```bash
+NEXT_PUBLIC_GOOGLE_API_KEY=<YOUR_API_KEY>
+```
+
+4. **Start the development server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. **Access the application:**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   Open your browser and navigate to `http://localhost:3000` to see the application in action.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Click the "Add Photo" button or the image preview area to upload an image.
+- Enter a text query in the input field.
+- Click the "Send" button or press Enter to submit the query.
+- Wait for the response to be generated and displayed in the result area.
+- To reset the prompts and response, click the "Reset" button.
