@@ -78,8 +78,8 @@ const MainPageComponent = () => {
               setPreview={setImagePromptPreview}
               preview={imagePromptPreview}
             />
-            <div className="h-full flex flex-col gap-5">
-              <div className="flex items-center justify-center gap-3 bg-zinc-50 rounded-xl px-3 py-2">
+            <div className="h-full w-full flex flex-col gap-5">
+              <div className="flex items-center justify-center gap-3 bg-zinc-50 rounded-xl px-3 py-3">
                 <textarea
                   name="textPrompt"
                   id="textPrompt"
@@ -89,16 +89,16 @@ const MainPageComponent = () => {
                   value={textPrompt}
                   onChange={handleTextChange}
                 />
-                {/* {imagePrompt && textPrompt && ( */}
-                <button
-                  className="bg-sky-500 text-white py-2 px-3 rounded-xl"
-                  onClick={() => {
-                    runChat(imagePrompt, textPrompt, setResponse);
-                    setProcessing(true);
-                  }}>
-                  <MdOutlineSend className="w-4 h-4" />
-                </button>
-                {/* )} */}
+                {imagePrompt && textPrompt && (
+                  <button
+                    // className="bg-sky-500 text-white py-1 px-3 rounded-xl"
+                    onClick={() => {
+                      runChat(imagePrompt, textPrompt, setResponse);
+                      setProcessing(true);
+                    }}>
+                    <MdOutlineSend className="text-sky-500 w-4 h-4" />
+                  </button>
+                )}
               </div>
               <div className={`h-[10rem] md:h-full rounded-xl p-3 bg-zinc-50`}>
                 {response ? (
@@ -107,9 +107,8 @@ const MainPageComponent = () => {
                     id="response"
                     className="w-full bg-transparent outline-none resize-none text-sm h-full"
                     value={response}
-                    readOnly>
-                    {response}
-                  </textarea>
+                    readOnly
+                  />
                 ) : processing ? (
                   <LoadingView />
                 ) : (
