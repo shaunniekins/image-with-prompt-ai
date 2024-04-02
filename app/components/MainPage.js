@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { runChat } from "../api/gemini-ai";
 import LoadingView from "./Loading";
 import ImageUploader from "./ImageUploader";
-import { MdOutlineRestartAlt } from "react-icons/md";
+import {
+  MdOutlineRestartAlt,
+  MdOutlineSearch,
+  MdOutlineSend,
+} from "react-icons/md";
 
-const FirstPageComponent = () => {
+const MainPageComponent = () => {
   const [imagePrompt, setImagePrompt] = useState(null);
   const [imagePromptPreview, setImagePromptPreview] = useState(null);
 
@@ -40,14 +45,23 @@ const FirstPageComponent = () => {
   }, [imagePrompt, textPrompt]);
 
   return (
-    <div className="h-screen w-screen bg-sky-500 flex flex-col justify-center items-center gap-5 overflow-hidden px-5">
-      <div className="flex flex-col gap-5 items-center justify-center bg-sky-100 rounded-3xl py-10 px-5 md:w-[35%]">
-        <div className="w-full flex items-center justify-between pb-5">
-          <button className="rounded-lg invisible">
+    <div className="h-screen w-screen bg-sky-500 flex flex-col justify-center items-center overflow-hidden px-5">
+      <div className="flex flex-col gap-5 items-center justify-center bg-sky-100 rounded-3xl px-5 py-6 md:py-0 md:h-[35%] md:w-[35%]">
+        <div className="w-full flex items-center justify-between">
+          {/* <button className="rounded-lg invisible">
             <MdOutlineRestartAlt className="w-6 h-6" />
-          </button>
+          </button> */}
 
-          <h1 className="text-3xl font-bold">Snap Search</h1>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/snap-search-logo.jpeg"
+              alt="Snap Search Logo"
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+            <h1 className="text-2xl font-bold">Snap Search</h1>
+          </div>
           <button className="rounded-lg" onClick={resetPrompt}>
             <MdOutlineRestartAlt className="w-6 h-6" />
           </button>
@@ -65,35 +79,38 @@ const FirstPageComponent = () => {
               preview={imagePromptPreview}
             />
             <div className="h-full flex flex-col gap-5">
-              <div className="flex gap-3">
-                <input
-                  type="text"
+              <div className="flex items-center justify-center gap-3 bg-zinc-50 rounded-xl px-3 py-2">
+                <textarea
                   name="textPrompt"
                   id="textPrompt"
-                  placeholder="Type your question here..."
-                  className="rounded-xl px-3 py-2 outline-none bg-zinc-50 w-full"
+                  placeholder="Enter a query here"
+                  rows="1"
+                  className="w-full bg-transparent outline-none resize-none"
                   value={textPrompt}
-                  onChange={handleTextChange}
-                />
+                  onChange={handleTextChange}>
+                  {textPrompt}
+                </textarea>
+                {/* {imagePrompt && textPrompt && ( */}
                 <button
-                  disabled={!imagePrompt || !textPrompt}
-                  className={`${
-                    !imagePrompt || !textPrompt
-                      ? "bg-gray-500 cursor-not-allowed"
-                      : "bg-sky-500"
-                  } text-white py-2 px-5 rounded-xl`}
+                  className="bg-sky-500 text-white py-2 px-3 rounded-xl"
                   onClick={() => {
                     runChat(imagePrompt, textPrompt, setResponse);
                     setProcessing(true);
-                    // setImagePrompt(null);
-                    // setTextPrompt("");
                   }}>
-                  Search!
+                  <MdOutlineSend className="w-4 h-4" />
                 </button>
+                {/* )} */}
               </div>
-              <div className={`rounded-xl p-3 bg-zinc-50 h-full overflow-auto`}>
+              <div className={`h-[10rem] md:h-full rounded-xl p-3 bg-zinc-50`}>
                 {response ? (
-                  <p className="text-wrap text-sm">{response}</p>
+                  <textarea
+                    name="response"
+                    id="response"
+                    className="w-full bg-transparent outline-none resize-none text-sm h-full"
+                    value={response}
+                    readOnly>
+                    {response}
+                  </textarea>
                 ) : processing ? (
                   <LoadingView />
                 ) : (
@@ -110,4 +127,4 @@ const FirstPageComponent = () => {
   );
 };
 
-export default FirstPageComponent;
+export default MainPageComponent;

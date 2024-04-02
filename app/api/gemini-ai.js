@@ -7,10 +7,10 @@ import {
 // gemini-pro-vision (for multi-modal [can't use this])
 // gemini-1.0-pro (for text-to-text)
 const MODEL_NAME = "gemini-pro-vision";
-const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY; // bad practice hahahah
+const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
 export async function runChat(imagePrompt, textPrompt, setResponse) {
-  console.log("runchat called");
+  // console.log("runchat called");
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 

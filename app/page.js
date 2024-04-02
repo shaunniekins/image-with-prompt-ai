@@ -1,9 +1,9 @@
-import FirstPageComponent from "./components/FirstPage";
+import MainPageComponent from "./components/MainPage";
 
 export default function Home() {
   return (
     <div>
-      <FirstPageComponent />
+      <MainPageComponent />
     </div>
   );
 }

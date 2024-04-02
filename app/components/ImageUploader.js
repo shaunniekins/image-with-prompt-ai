@@ -25,7 +25,7 @@ const ImageUploader = ({
 
   return (
     <>
-      <div className="flex flex-col p-3 gap-2 bg-zinc-100 rounded-lg">
+      <div className="flex flex-col p-3 gap-2 bg-zinc-50 rounded-lg">
         {/* <label className="text-sky-700">{title}</label> */}
         <div className="flex flex-col items-center">
           {preview ? (
