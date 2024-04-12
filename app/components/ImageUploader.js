@@ -42,6 +42,7 @@ const ImageUploader = ({
                 disabled={isDisabled}
                 type="file"
                 className="hidden"
+                accept="image/*"
                 onChange={handleImageChange}
               />
             </label>
@@ -62,6 +63,7 @@ const ImageUploader = ({
                 disabled={isDisabled}
                 type="file"
                 className="hidden"
+                accept="image/*"
                 onChange={handleImageChange}
               />
             </label>
